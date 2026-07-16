@@ -11,7 +11,7 @@
     {
       "name": "tradeos",
       "source": "./plugins/tradeos",
-      "description": "iTRADE のバックテスト・戦略アシスタント。AIStrategist で戦略を作り → バックテストで検証 → （今後）本番稼働まで一気通貫。",
+      "description": "iTRADE のバックテスト・戦略アシスタント。AI-Strategist で戦略を作り → バックテストで検証 → （今後）本番稼働まで一気通貫。",
       "version": "0.1.0",
       "author": {
         "name": "MultiWave Co., Ltd."
