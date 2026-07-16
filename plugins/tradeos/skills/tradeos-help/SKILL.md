@@ -1,6 +1,6 @@
 ---
 name: tradeos-help
-description: Use when the user asks about TradeOS, iTRADE backtesting, creating a trading strategy from natural language (AIStrategist), running a portfolio backtest, editing baskets, the strategy library, or improving a strategy without overfitting. Explains what TradeOS does and how to drive its MCP tools.
+description: Use when the user asks about TradeOS, iTRADE backtesting, creating a trading strategy from natural language (AI-Strategist), running a portfolio backtest, editing baskets, the strategy library, or improving a strategy without overfitting. Explains what TradeOS does and how to drive its MCP tools.
 ---
 
 # TradeOS の使い方ガイド
