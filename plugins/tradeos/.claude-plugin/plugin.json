@@ -1,0 +1,38 @@
+{
+  "name": "tradeos",
+  "displayName": "TradeOS",
+  "version": "0.1.0",
+  "description": "iTRADE のバックテスト・戦略アシスタントを Claude Code から使うコネクター。AIStrategist で戦略を作り → バックテストで検証 → （今後）本番稼働まで。",
+  "author": {
+    "name": "MultiWave Co., Ltd."
+  },
+  "homepage": "https://github.com/multiwave-co-ltd/tradeos-marketplace",
+  "repository": "https://github.com/multiwave-co-ltd/tradeos-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "TradeOS",
+    "iTRADE",
+    "AI strategy generation",
+    "backtesting",
+    "trading",
+    "MCP"
+  ],
+  "userConfig": {
+    "tradeos_username": {
+      "type": "string",
+      "title": "iTRADE username",
+      "description": "TradeOS/iTRADE のユーザー名。macOS では Keychain、Windows/Linux では平文ファイルに保存されます。平文保存を避けたい場合は空欄のまま `/tradeos-setup`（トークンのみ保存）を使ってください。",
+      "required": false,
+      "default": ""
+    },
+    "tradeos_password": {
+      "type": "string",
+      "title": "iTRADE password",
+      "description": "パスワード。macOS では Keychain に安全に保存。Windows/Linux は平文保存になるため、空欄にして `/tradeos-setup` の利用を推奨（パスワードは保存されず、スコープ付き API キーだけをローカルにキャッシュ）。",
+      "sensitive": true,
+      "required": false,
+      "default": ""
+    }
+  },
+  "mcpServers": "./.mcp.json"
+}

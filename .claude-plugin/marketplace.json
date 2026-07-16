@@ -1,0 +1,24 @@
+{
+  "name": "tradeos",
+  "owner": {
+    "name": "MultiWave Co., Ltd."
+  },
+  "metadata": {
+    "description": "TradeOS — iTRADE backtest & strategy assistant for Claude Code",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "tradeos",
+      "source": "./plugins/tradeos",
+      "description": "iTRADE のバックテスト・戦略アシスタント。AIStrategist で戦略を作り → バックテストで検証 → （今後）本番稼働まで一気通貫。",
+      "version": "0.1.0",
+      "author": {
+        "name": "MultiWave Co., Ltd."
+      },
+      "homepage": "https://github.com/multiwave-co-ltd/tradeos-marketplace",
+      "license": "MIT",
+      "keywords": ["TradeOS", "iTRADE", "backtesting", "AI strategy generation", "MCP"]
+    }
+  ]
+}

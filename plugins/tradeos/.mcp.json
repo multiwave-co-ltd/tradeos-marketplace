@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "tradeos": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/server/index.js",
+        "${user_config.tradeos_username}",
+        "${user_config.tradeos_password}"
+      ]
+    }
+  }
+}

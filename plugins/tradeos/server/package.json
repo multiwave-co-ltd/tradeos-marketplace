@@ -1,0 +1,10 @@
+{
+  "name": "tradeos-mcp-proxy",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TradeOS stdio<->HTTP MCP proxy (Node built-ins only, cross-platform)",
+  "engines": {
+    "node": ">=18"
+  }
+}
