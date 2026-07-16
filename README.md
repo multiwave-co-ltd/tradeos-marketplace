@@ -129,10 +129,9 @@ MCP プロキシは **Node.js 標準ライブラリのみ**で書かれ、依存
 ---
 
 <div align="center">
-<sub>
 
-**TradeOS** — Powered by iTRADE · Built for Claude<br/>
-© MultiWave Co., Ltd. All rights reserved · Licensed under MIT
+**TradeOS** — Powered by iTRADE · Built for Claude
 
-</sub>
+<sub>© 2026 MultiWave Co., Ltd. · All rights reserved · Licensed under MIT</sub>
+
 </div>
