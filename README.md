@@ -9,11 +9,11 @@
 
 <br/>
 
-![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-6C5CE7?style=for-the-badge)
-![Version](https://img.shields.io/badge/version-0.1.0-blue?style=for-the-badge)
-![Tools](https://img.shields.io/badge/MCP-39_tools_+_1_prompt-orange?style=for-the-badge)
-![Platform](https://img.shields.io/badge/platform-macOS_·_Linux_·_Windows-informational?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-6C5CE7?style=for-the-badge)](https://code.claude.com/docs/en/plugins)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace)
+[![Tools](https://img.shields.io/badge/MCP-39_tools_+_1_prompt-orange?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace/tree/main/plugins/tradeos)
+[![Platform](https://img.shields.io/badge/platform-macOS_·_Linux_·_Windows-informational?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace)
+[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace/blob/main/LICENSE)
 
 </div>
 
