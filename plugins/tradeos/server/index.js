@@ -159,7 +159,42 @@ const isHttps = url.protocol === 'https:';
 const doRequest = isHttps ? httpsReq : httpReq;
 let sessionId = null;
 
-async function postMessage(msg, isRetry = false) {
+// ── #3 session recovery ──────────────────────────────────────────────────
+// The MCP Streamable HTTP server drops a session after an idle window; a
+// subsequent request carrying the now-stale Mcp-Session-Id gets HTTP 404.
+// This proxy is a passthrough that never constructs `initialize` itself, so
+// it caches the client's initialize handshake as it flows through and
+// replays it to mint a fresh session, then replays the failed request —
+// transparently to the client.
+let lastInitialize = null;
+let lastInitialized = null;
+let reinitPromise = null;
+
+function rememberHandshake(msg) {
+  if (msg && msg.method === 'initialize') lastInitialize = msg;
+  else if (msg && msg.method === 'notifications/initialized') lastInitialized = msg;
+}
+
+// Single-flight re-initialization: concurrent 404s join the same in-flight
+// re-init instead of each racing a new session/key rotation.
+function reinitSession() {
+  if (reinitPromise) return reinitPromise;
+  reinitPromise = (async () => {
+    sessionId = null; // drop the dead session id
+    if (!lastInitialize) throw new Error('cannot re-initialize: no cached initialize request');
+    await postMessage(lastInitialize, false, true, false);
+    if (lastInitialized) await postMessage(lastInitialized, false, true, false);
+  })().finally(() => { reinitPromise = null; });
+  return reinitPromise;
+}
+
+async function postMessage(msg, isRetry = false, sessionRetry = false, forwardStdout = true) {
+  // If a session re-init is in flight, wait for it so this request uses the
+  // fresh session id. The re-init's own handshake replays pass
+  // sessionRetry=true and must not wait on themselves.
+  if (reinitPromise && !sessionRetry) {
+    await reinitPromise.catch(() => {});
+  }
   const key = await ensureApiKey();
   const body = JSON.stringify(msg);
   const headers = {
@@ -189,7 +224,18 @@ async function postMessage(msg, isRetry = false) {
           process.stderr.write('[tradeos] Got 401 from upstream — cached key stale, re-issuing...\n');
           clearCachedKey();
           apiKey = null;
-          postMessage(msg, true).then(resolve, reject);
+          postMessage(msg, true, sessionRetry, forwardStdout).then(resolve, reject);
+          return;
+        }
+
+        // 404 with a session id -> session expired/reaped; re-initialize
+        // once (single-flight) and replay this request.
+        if (res.statusCode === 404 && sessionId && !sessionRetry) {
+          res.resume();
+          process.stderr.write('[tradeos] Got 404 (session expired) — re-initializing session...\n');
+          reinitSession()
+            .then(() => postMessage(msg, isRetry, true, forwardStdout))
+            .then(resolve, reject);
           return;
         }
 
@@ -207,7 +253,10 @@ async function postMessage(msg, isRetry = false) {
               if (line.startsWith('data: ')) {
                 const d = line.slice(6).trim();
                 if (d && d !== '[DONE]') {
-                  try { process.stdout.write(JSON.stringify(JSON.parse(d)) + '\n'); } catch { /* ignore malformed */ }
+                  try {
+                    const parsed = JSON.parse(d);
+                    if (forwardStdout) process.stdout.write(JSON.stringify(parsed) + '\n');
+                  } catch { /* ignore malformed */ }
                 }
               }
             }
@@ -219,8 +268,10 @@ async function postMessage(msg, isRetry = false) {
           res.on('data', (c) => { raw += c; });
           res.on('end', () => {
             if (raw.trim()) {
-              try { process.stdout.write(JSON.stringify(JSON.parse(raw)) + '\n'); }
-              catch { process.stderr.write(`Non-JSON response (${res.statusCode}): ${raw.slice(0, 200)}\n`); }
+              try {
+                const parsed = JSON.parse(raw);
+                if (forwardStdout) process.stdout.write(JSON.stringify(parsed) + '\n');
+              } catch { process.stderr.write(`Non-JSON response (${res.statusCode}): ${raw.slice(0, 200)}\n`); }
             }
             resolve();
           });
@@ -273,7 +324,15 @@ if (SETUP_MODE) {
   rl.on('line', async (line) => {
     const t = line.trim();
     if (!t) return;
-    try { await postMessage(JSON.parse(t)); }
+    let msg;
+    try {
+      msg = JSON.parse(t);
+    } catch (err) {
+      process.stderr.write(`Proxy error: bad JSON from client: ${err.message}\n`);
+      return;
+    }
+    rememberHandshake(msg);
+    try { await postMessage(msg); }
     catch (err) { process.stderr.write(`Proxy error: ${err.message}\n`); }
   });
   rl.on('close', () => process.exit(0));
