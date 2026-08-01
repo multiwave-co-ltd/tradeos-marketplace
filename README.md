@@ -11,7 +11,7 @@
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-6C5CE7?style=for-the-badge)](https://code.claude.com/docs/en/plugins)
 [![Version](https://img.shields.io/badge/version-0.1.1-blue?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace)
-[![Tools](https://img.shields.io/badge/MCP-39_tools_+_1_prompt-orange?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace/tree/main/plugins/tradeos)
+[![Tools](https://img.shields.io/badge/MCP-51_tools_+_1_prompt-orange?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace/tree/main/plugins/tradeos)
 [![Platform](https://img.shields.io/badge/platform-macOS_·_Linux_·_Windows-informational?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace/blob/main/LICENSE)
 
@@ -45,7 +45,7 @@ Claude Code のセッション内で:
 /plugin install tradeos@tradeos
 ```
 
-続けて認証をセットアップ（下記「🔐 認証」参照）→ 新しいセッションで **39 ツールが利用可能**に。
+続けて認証をセットアップ（下記「🔐 認証」参照）→ 新しいセッションで **51 ツールが利用可能**に。
 
 > 💡 まず試すなら「**TradeOS ヘルプ**」と話しかけてください。全体像と分野別の使い方がチャット内に表示されます。
 
@@ -90,7 +90,7 @@ node "$(find ~/.claude/plugins -path '*tradeos/server/index.js' | head -1)" --se
 
 ## 📦 含まれるもの
 
-- 🔌 **MCP サーバー `tradeos`** — 39 ツール + `atras_improvement_loop` プロンプト
+- 🔌 **MCP サーバー `tradeos`** — 51 ツール + `atras_improvement_loop` プロンプト
 - 🧠 **スキル `tradeos-help`** — Claude が TradeOS を正しく使うための知識
 - ⚙️ **コマンド `/tradeos-setup`** — 認証セットアップ支援
 
