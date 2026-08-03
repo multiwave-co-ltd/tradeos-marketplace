@@ -7,7 +7,9 @@ description: TradeOS の初回セットアップ — iTRADE 認証情報を安�
 # 2つの方法を提示し、ユーザーに選んでもらう
 
 ## 方法1（推奨・全 OS で安全）: トークン先行セットアップ
-パスワードを保存せず、発行した API キーだけをローカル（`~/.tradeos/apikey`）にキャッシュします。**Windows/Linux でも安全**です。
+パスワードを保存せず、発行した API キーだけをローカル（バックテスト用 `~/.tradeos/apikey`、リアルトレード用 `~/.tradeos/rt-apikey`）にキャッシュします。**Windows/Linux でも安全**です。
+
+※ セットアップ時に両方の API キーをまとめて発行します。リアルトレードの口座をお持ちでない場合はその分だけスキップされ、バックテストは通常どおりご利用いただけます。
 
 手順:
 1. このプラグインの `server/index.js` の実パスを探す（`~/.claude/plugins/` 配下、または Glob で `**/tradeos/server/index.js`）。
