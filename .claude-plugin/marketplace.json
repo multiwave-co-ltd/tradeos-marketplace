@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "TradeOS — iTRADE backtest & strategy assistant for Claude Code",
-    "version": "0.2.0"
+    "version": "0.2.1"
   },
   "plugins": [
     {
       "name": "tradeos",
       "source": "./plugins/tradeos",
       "description": "iTRADE のバックテスト・戦略アシスタント。AI-Strategist で戦略を作り → バックテストで検証 → 本番稼働の状況を参照まで一気通貫。",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "MultiWave Co., Ltd."
       },

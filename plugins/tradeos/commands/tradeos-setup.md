@@ -28,7 +28,9 @@ description: TradeOS の初回セットアップ — iTRADE 認証情報を安�
 > ⚠️ Windows/Linux では、この方法だとパスワードが平文ファイル（`~/.claude/.credentials.json`）に保存されます。これらの OS では**方法1を推奨**してください。
 
 # セットアップ後の確認
-- `/mcp` で `tradeos` が `✔ Connected` になっているか
+- 入力欄で `/mcp servers` を実行し、`plugin:tradeos:tradeos` が `✓ Connected` になっているか
+  - `/mcp` だけだと「6 MCP server(s): 3 connected, 3 not connected, 0 disabled.」のような
+    件数の要約が返るだけで、個別のサーバー名は表示されません
 - 「TradeOS ヘルプ」と聞くと使い方が表示される
 
 認証に失敗する場合は、iTRADE のユーザー名・パスワードが正しいか、キーが失効していないか（その場合は方法1を再実行）を確認してください。

@@ -1,7 +1,7 @@
 {
   "name": "tradeos",
   "displayName": "TradeOS",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "iTRADE のバックテスト・戦略アシスタントを Claude Code から使うコネクター。AI-Strategist で戦略を作り → バックテストで検証 → 本番稼働の状況を参照まで。",
   "author": {
     "name": "MultiWave Co., Ltd."

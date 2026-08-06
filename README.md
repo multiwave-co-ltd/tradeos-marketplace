@@ -10,7 +10,7 @@
 <br/>
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-6C5CE7?style=for-the-badge)](https://code.claude.com/docs/en/plugins)
-[![Version](https://img.shields.io/badge/version-0.2.0-blue?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace)
+[![Version](https://img.shields.io/badge/version-0.2.1-blue?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace)
 [![Tools](https://img.shields.io/badge/MCP-42_BT_+_9_RT_+_1_prompt-orange?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace/tree/main/plugins/tradeos)
 [![Platform](https://img.shields.io/badge/platform-macOS_·_Linux_·_Windows-informational?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](https://github.com/multiwave-co-ltd/tradeos-marketplace/blob/main/LICENSE)
